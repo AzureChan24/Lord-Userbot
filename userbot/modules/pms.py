@@ -91,7 +91,7 @@ async def permitpm(event):
 
             if COUNT_PM[event.chat_id] > 5:
                 await event.respond(
-                    "`Anda Telah Di Blokir Karna Melakukan Spam Pesan`\n"
+                    "`Sampeyan Di Blokir Mergo Spam Neng Awakku`\n"
                     "`Ke Room Chat Lord ツ`"
                 )
 
@@ -119,7 +119,7 @@ async def permitpm(event):
                         + "](tg://user?id="
                         + str(event.chat_id)
                         + ")"
-                        + " Telah Diblokir Karna Melakukan Spam Ke Room Chat",
+                        + " Wis Di Blokir Mergo Spam Neng Room Chat",
                     )
 
 
@@ -231,9 +231,9 @@ async def approvepm(apprvpm):
     try:
         approve(uid)
     except IntegrityError:
-        return await apprvpm.edit("`Oke Pesan Anda Sudah Diterima ツ`")
+        return await apprvpm.edit("`Oke Pesan Sampeyan Wis Diterima ツ`")
 
-    await apprvpm.edit(f"`Hai` [{name0}](tg://user?id={uid}) `Pesan Anda Sudah Diterima ツ`")
+    await apprvpm.edit(f"`Hai` [{name0}](tg://user?id={uid}) `Pesan Sampeyan Wis Diterima ツ`")
     await apprvpm.delete(getmsg)
     await message.delete()
 
@@ -283,12 +283,12 @@ async def blockpm(block):
         aname = replied_user.id
         name0 = str(replied_user.first_name)
         await block.client(BlockRequest(aname))
-        await block.edit("`Anda Telah Diblokir!`")
+        await block.edit("`Sampeyan Diblokir!`")
         uid = replied_user.id
     else:
         await block.client(BlockRequest(block.chat_id))
         aname = await block.client.get_entity(block.chat_id)
-        await block.edit("`Anda Telah Diblokir!`")
+        await block.edit("`Sampeyan Diblokir!`")
         name0 = str(aname.first_name)
         uid = block.chat_id
 
@@ -314,12 +314,12 @@ async def unblockpm(unblock):
         replied_user = await unblock.client.get_entity(reply.from_id)
         name0 = str(replied_user.first_name)
         await unblock.client(UnblockRequest(replied_user.id))
-        await unblock.edit("`Anda Sudah Tidak Diblokir Lagi.`")
+        await unblock.edit("`Sampeyan Wes ra Di Blokir.`")
 
     if BOTLOG:
         await unblock.client.send_message(
             BOTLOG_CHATID,
-            f"[{name0}](tg://user?id={replied_user.id})" " Tidak Lagi Diblokir.",
+            f"[{name0}](tg://user?id={replied_user.id})" " Wes Ora Diblokir.",
         )
 
 
